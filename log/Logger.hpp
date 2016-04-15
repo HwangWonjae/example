@@ -19,7 +19,7 @@ public:
     virtual void write(const Record& record) // This is a method from IAppender that MUST be implemented.
     {
         util::nstring str = Formatter::format(record); // Use the formatter to get a string from a record.
-		OutputDebugString(str.c_str());
+		OutputDebugStringW(str.c_str());
     }
 };
 }
@@ -32,11 +32,10 @@ public:
          // Create the 1st appender.
         static plog::ColorConsoleAppender<plog::FuncMessageFormatter> consoleAppender;
         plog::init(plog::debug, &consoleAppender);
-        //plog::get()->setMaxSeverity(getLevel());
+        plog::get()->setMaxSeverity(getLevel());
 
         // Create the 2nd appender.
         static plog::RollingFileAppender<plog::FuncMessageFormatter>
-				//fileAppender("D:\\PlogTest.log", 2000, 2);
 				fileAppender(getLogPath().c_str(), getMaxFileSize(), getMaxFiles());
         plog::get()->addAppender(&fileAppender);
 
@@ -48,10 +47,10 @@ public:
 private:
 	std::string getProcessName()
 	{
-		char pathName[MAX_PATH];
-		GetModuleFileNameA(NULL, pathName, MAX_PATH);
+		TCHAR pathName[MAX_PATH];
+		GetModuleFileName(NULL, pathName, MAX_PATH);
 
-		char fileName[MAX_PATH];
+		TCHAR fileName[MAX_PATH];
 		_splitpath_s(pathName, NULL, 0, NULL, 0, fileName, MAX_PATH, NULL, 0);
 
 		return std::string(fileName);

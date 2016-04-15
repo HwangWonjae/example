@@ -14,12 +14,12 @@ int main(int argc, char *argv[])
 
 	common::Logger::get_const_instance();
 	for (int i = 0; i < 20; i++) {
-		LOGV << "A message!";
-	    LOGD << "A message!";
-		LOGI << "A message!";
-		LOGW << "A message!";
-		LOGE << "A message!";
-		LOGF << "A message!";
+		LOGV << "A 한글 message!";
+	    LOGD << "A 한글 message!";
+		LOGI << "A 한글 message!";
+		LOGW << "A 한글 message!";
+		LOGE << "A 한글 message!";
+		LOGF << "A 한글 message!";
 	}
 
     return 0;
