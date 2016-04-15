@@ -60,38 +60,38 @@ private:
     std::string getLogPath()
     {
         std::stringstream ss;
-		std::string path = getEnv("SYNCVIEW_LOG_PATH");
+		std::string path = getEnv("LOG_PATH");
 		if (!path.empty()) {
             ss << path << "/";
         }
         ss << getProcessName() << ".log";
 
-        LOGD << "SYNCVIEW_LOG_PATH:" << ss.str();
+        LOGD << "LOG_PATH:" << ss.str();
         return ss.str();
     }
 
     plog::Severity getLevel()
     {
-		const std::string level = getEnv("SYNCVIEW_LOG_LEVEL");
-		LOGD_IF(!level.empty()) << "ENV.SYNCVIEW_LOG_LEVEL:" << level
+		const std::string level = getEnv("LOG_LEVEL");
+		LOGD_IF(!level.empty()) << "ENV.LOG_LEVEL:" << level
                 << ":" << plog::severityFromString(level.c_str());
-        LOGW_IF(level.empty()) << "ENV.SYNCVIEW_LOG_LEVEL:" << "NULL";
+        LOGW_IF(level.empty()) << "ENV.LOG_LEVEL:" << "NULL";
 		return level.empty() ? plog::debug : plog::severityFromString(level.c_str());
     }
 
     size_t getMaxFileSize()
     {
-		const std::string size = getEnv("SYNCVIEW_LOG_MAXFILESIZE");
-		LOGD_IF(!size.empty()) << "ENV.SYNCVIEW_LOG_MAXFILESIZE:" << size;
-		LOGW_IF(size.empty()) << "ENV.SYNCVIEW_LOG_MAXFILESIZE:" << "NULL";
+		const std::string size = getEnv("LOG_MAXFILESIZE");
+		LOGD_IF(!size.empty()) << "ENV.LOG_MAXFILESIZE:" << size;
+		LOGW_IF(size.empty()) << "ENV.LOG_MAXFILESIZE:" << "NULL";
         return size.empty() ? 0 : std::atoi(size.c_str());
     }
 
     int getMaxFiles()
     {
-		const std::string files = getEnv("SYNCVIEW_LOG_MAXFILES");
-		LOGD_IF(!files.empty()) << "ENV.SYNCVIEW_LOG_MAXFILES:" << files;
-		LOGW_IF(files.empty()) << "ENV.SYNCVIEW_LOG_MAXFILES:" << "NULL";
+		const std::string files = getEnv("LOG_MAXFILES");
+		LOGD_IF(!files.empty()) << "ENV.LOG_MAXFILES:" << files;
+		LOGW_IF(files.empty()) << "ENV.LOG_MAXFILES:" << "NULL";
 		return files.empty() ? 0 : std::atoi(files.c_str());
     }
 
