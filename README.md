@@ -19,8 +19,10 @@
   - spdlog
     - 기본 로그 기능에 파일명 및 라인번호가 표시되지 않음
     - 파일명 및 라인번호를 찍을 수 있는 기능이 있기는 한걸로 알고 있음
+    - header only library
   - easyloggingc++
     - 로그파일 롤링 기능이 미제공
+    - header only library
   - log4cplus 
-    - Header Only Library 가 아님
     - log4j와 비슷한 사용법
+    - header only library 아님
