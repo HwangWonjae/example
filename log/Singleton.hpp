@@ -8,8 +8,7 @@
 namespace common {
 
 template<typename T>
-class Singleton
-{
+class Singleton {
 public:
     static void init()
     {
